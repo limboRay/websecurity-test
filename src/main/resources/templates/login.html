@@ -49,8 +49,8 @@
                         <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden">
                         <button type="submit" class="btn btn-primary">Log in</button>
                         <form th:action="@{/registration}" method="post">
-                        <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden">
-                        <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Registration</a>
+
+                        <a href="/registration" class="btn btn-primary" role="button" aria-pressed="true">Registration</a>
                     </form>
                     </form>
                 </div>

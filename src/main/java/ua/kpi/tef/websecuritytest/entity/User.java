@@ -17,7 +17,7 @@ import java.util.List;
 @Data
 @Entity
 @Table( name="user",
-		uniqueConstraints={@UniqueConstraint(columnNames={"username", "email"})})
+		uniqueConstraints={@UniqueConstraint(columnNames={"username"})})
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -35,7 +35,7 @@ public class User {
 	private String username;
 	@Column(name = "password", nullable = false)
 	private String password;
-	@Column(nullable = false)
+	@Column
 	private String email;
 	@Column(name = "role")
 	@Enumerated(EnumType.STRING)
@@ -47,6 +47,7 @@ public class User {
 	private boolean accountNonLocked;
 	private boolean credentialsNonExpired;
 	private boolean enabled;
+
 
 
 }

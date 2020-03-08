@@ -27,27 +27,51 @@
                 </div>
 
                 <div class="panel-body">
-                    <div th:if="${logout}">
-                        <div class="alert alert-info" role="alert">You've been logged out successfully.</div>
-                    </div>
-                    <div th:if="${error}">
-                        <div class="alert alert-danger" role="alert">Invalid Username or Password!</div>
-                    </div>
 
-                    <form method="post">
-                        <input name="${_csrf.parameterName}" value="${_csrf.token}" type="hidden">
+
+                    <form action="/registration" th:object="${user}" method="post">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Email"
+                                   th:name="email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="first_name">Name</label>
+                            <input type="text" class="form-control" id="first_name" placeholder="Name"
+                                   th:name="firstName">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="first_name_cyr">Имя</label>
+                            <input type="text" class="form-control" id="first_name_cyr" placeholder="Имя"
+                                   th:name="firstNameCyr">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="last_name">Surname</label>
+                            <input type="text" class="form-control" id="last_name" placeholder="Surname"
+                                   th:name="lastName">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="last_name_cyr">Фамилия</label>
+                            <input type="text" class="form-control" id="last_name_cyr" placeholder="Фамилия"
+                                   th:name="lastNameCyr">
+                        </div>
                         <div class="form-group">
                             <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" placeholder="Username"
-                                   name="username">
+                            <input  type="text" class="form-control" id="username" placeholder="Username"
+                                   th:name="username">
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password"
-                                   name="password">
+                            <input path="password" type="password" class="form-control" id="password" placeholder="Password"
+                                   th:name="password">
                         </div>
-                        <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden">
-                        <button type="submit" class="btn btn-primary">Log in</button>
+                        <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden" >
+                        <button type="submit" class="btn btn-primary">Registration</button>
                     </form>
                 </div>
             </div>
