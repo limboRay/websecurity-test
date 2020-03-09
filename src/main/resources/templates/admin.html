@@ -5,7 +5,7 @@
     <title>Web Test</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="main.css">
+
 </head>
 <script type="text/javascript">
     function handleClick(lang_radio) {
@@ -17,7 +17,8 @@
 <body>
 <div class="column">
     <form name="language_selection" action="#" th:action="@{/index}" th:object="${language}" method="post" align="right">
-        <select th:field="*{choice}" onchange="handleClick(this).value"  >
+        <label for="exampleFormControlSelect1">Example select</label>
+        <select class="form-control" id="exampleFormControlSelect1" th:field="*{choice}" onchange="handleClick(this).value" >
             <option th:each="current : ${supported}" th:value="${current.code}"  th:text="${current.code}"></option>
 
         </select>
@@ -25,21 +26,28 @@
     <h1 th:text="#{lobby.welcome}">Header</h1>
     <div>
 
-
-        <div>
-            <h3 th:text="#{users.header} + ':'">{Here goes user table}</h3>
-            <table>
-                <tr th:each="user : ${users}">
-                    <td>
-                        👉 <span th:text="${user.firstName} + ' ' + ${user.lastName}"
-                                 th:remove="tag">{Full user name}</span>
-                        <br/><br/>
-                    </td>
-                </tr>
-            </table>
-
-        </div>
         <br/>
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Role</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <th scope="row" th:text="${user.id}"></th>
+                <td th:text="${user.firstName}" ></td>
+                <td th:text="${user.lastName}" ></td>
+                <td th:text="${user.role}"></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <br/>
 
     </div>
     <form th:action="@{/logout}" method="post">

@@ -14,13 +14,13 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @ToString
-@Data
+
 @Entity
 @Table( name="user",
 		uniqueConstraints={@UniqueConstraint(columnNames={"username"})})
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false)
 	private Long id;
 	@Column(name = "first_name", nullable = false)
